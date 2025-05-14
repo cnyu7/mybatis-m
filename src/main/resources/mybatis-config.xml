@@ -5,7 +5,9 @@
 <configuration>
     <settings>
         <setting name="logImpl" value="LOG4j"/>
+<!--        <setting name= " mapUnderscoreToCamelCase " value= "true" />-->
     </settings>
+
     <typeAliases>
         <package name="com.cn.mybatis"/>
     </typeAliases>
@@ -22,5 +24,6 @@
     </environments>
     <mappers>
         <mapper resource="com/cn/mybatis/CountryMapper.xml"/>
+        <package name="com.cn.mapper"/>
     </mappers>
 </configuration>

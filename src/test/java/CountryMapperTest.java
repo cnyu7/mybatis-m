@@ -1,4 +1,6 @@
+import com.cn.mapper.SysUserMapper;
 import com.cn.mybatis.Country;
+import com.cn.mybatis.SysUser;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -29,13 +31,52 @@ public class CountryMapperTest {
     public void testselectAll() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            List<Country> countryList = sqlSession.selectList("selectAll");
+            List<Country> countryList = sqlSession.selectList("comn.cn.mybatis.CountryMapper"+"selectAll");
             printCountryList(countryList);
         } finally {
 //不要忘记关闭 sqlSession
             sqlSession.close();
         }
     }
+    @Test
+    public void testselectAll1() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            List<SysUser> countryList = sqlSession.selectList("com.cn.mapper" +
+                    ".SysUserMapper.selectAll");
+            countryList.forEach(SysUser -> System.out.println(SysUser.toString()));
+
+        } finally {
+//不要忘记关闭 sqlSession
+            sqlSession.close();
+        }
+    }
+    @Test
+    public void testSelectByid() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            SysUserMapper mapper = sqlSession.getMapper(SysUserMapper.class);
+            SysUser sysUser = mapper.selectById(1L);
+            System.out.println(sysUser.toString());
+        } finally {
+//不要忘记关闭 sqlSession
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void selectUserAndRoleById() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            SysUserMapper mapper = sqlSession.getMapper(SysUserMapper.class);
+            SysUser sysUser = mapper.selectUserAndRoleById(1001L);
+            System.out.println(sysUser.toString());
+        } finally {
+//不要忘记关闭 sqlSession
+            sqlSession.close();
+        }
+    }
+
 
     private void printCountryList(List<Country> countryList) {
         for (Country country : countryList) {
