@@ -76,6 +76,18 @@ public class CountryMapperTest {
             sqlSession.close();
         }
     }
+    @Test
+    public void selectUserAndRoleById2() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            SysUserMapper mapper = sqlSession.getMapper(SysUserMapper.class);
+            SysUser sysUser = mapper.selectUserAndRoleById2(1001L);
+            System.out.println(sysUser.toString());
+        } finally {
+//不要忘记关闭 sqlSession
+            sqlSession.close();
+        }
+    }
 
 
     private void printCountryList(List<Country> countryList) {
