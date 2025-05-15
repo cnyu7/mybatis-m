@@ -10,6 +10,9 @@ import com.cn.mybatis.SysRole;
 */
 public interface SysRoleMapper {
 
+
+   SysRole selectRoleById(Long id);
+
 }
 
 

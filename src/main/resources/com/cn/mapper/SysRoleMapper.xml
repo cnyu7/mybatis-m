@@ -16,4 +16,9 @@
         id,role_name,enabled,
         create_by,create_time
     </sql>
+
+<!--  关联的嵌套查询association此处不能加 parameterType="java.lang.Long"-->
+    <select id="selectRoleById" resultType="com.cn.mybatis.SysRole" >
+      select * from sys_role where id = #{id}
+    </select>
 </mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- status="WARN"表示全局的日子级别-->
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <!-- 设置MyBatis Mapper接口的日志级别 -->
+        <!-- com.example.mapper为mapper的xml文件所在的包路径-->
+        <!-- additivity="false" 表示不传递给父级（root）,不重复打印日志-->
+        <Logger name="com.cn" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <!-- 根日志级别 -->
+        <!--logger的级别是：root,logger; root是根日志，logger是root的子级别；root及logger里面的AppenderRef表示打印的方式-控制台 -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
