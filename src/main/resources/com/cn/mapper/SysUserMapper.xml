@@ -47,11 +47,12 @@
         <association property="role" column="{id=role_id}" fetchType="lazy" select="com.cn.mapper.SysRoleMapper.selectRoleById" />
     </resultMap>
 
-<sql id="Base_Column_List">
+    <sql id="Base_Column_List">
         id,user_name,user_password,
         user_email,user_info,create_time,
         head_img
     </sql>
+    <cache/>
     <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select * from sys_user where id = #{id}
     </select>

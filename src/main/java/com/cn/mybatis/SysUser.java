@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * @TableName sys_user
  */
-public class SysUser implements Serializable {
+public class SysUser /*implements Serializable */{
 
     private Long id;
 

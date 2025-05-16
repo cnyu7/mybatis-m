@@ -11,7 +11,7 @@
         <!-- 设置MyBatis Mapper接口的日志级别 -->
         <!-- com.example.mapper为mapper的xml文件所在的包路径-->
         <!-- additivity="false" 表示不传递给父级（root）,不重复打印日志-->
-        <Logger name="com.cn" level="DEBUG" additivity="false">
+        <Logger name="com.cn" level="trace" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
 

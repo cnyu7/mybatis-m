@@ -114,4 +114,45 @@ public class CountryMapperTest {
             System.out.printf("%-4d%4s%4s\n", country.getId(), country.getCountryName(), country.getCountryCode());
         }
     }
+
+
+    @Test
+    public void testL1Cache() {
+
+        SqlSession sqlSession1 = sqlSessionFactory.openSession();
+        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        try {
+            SysUserMapper mapper = sqlSession1.getMapper(SysUserMapper.class);
+            SysUser user1 = mapper.selectById(1L);
+            System.out.println(user1);
+//            sqlSession1.clearCache();
+            SysUserMapper mapper2 = sqlSession1.getMapper(SysUserMapper.class);
+//            SysUserMapper mapper2 = sqlSession2.getMapper(SysUserMapper.class);
+            SysUser user2 = mapper2.selectById(1L);
+            System.out.println(user2);
+
+        } finally {
+//不要忘记关闭 sqlSession
+        sqlSession1.close();
+        sqlSession2.close();
+    }
+    }
+
+
+    @Test
+    public void testL2Cache() {
+
+        SqlSession sqlSession1 = sqlSessionFactory.openSession();
+        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        SysUserMapper mapper = sqlSession1.getMapper(SysUserMapper.class);
+        SysUser user1 = mapper.selectById(1L);
+        System.out.println(user1);
+//        sqlSession1.close();
+        SysUserMapper mapper2 = sqlSession2.getMapper(SysUserMapper.class);
+        SysUser user2 = mapper2.selectById(1L);
+        System.out.println(user2);
+        sqlSession1.close();
+        sqlSession2.close();
+
+    }
 }
