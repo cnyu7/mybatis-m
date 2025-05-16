@@ -3,6 +3,7 @@ package com.cn.mybatis;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @TableName sys_user
@@ -23,16 +24,16 @@ public class SysUser implements Serializable {
 
     private byte[] headImg;
 
-    private SysRole role;
+    private List<SysRole> roleList;
 
     private static final long serialVersionUID = 1L;
 
-    public SysRole getRole() {
-        return role;
+    public List<SysRole> getRoleList() {
+        return roleList;
     }
 
-    public void setRole(SysRole role) {
-        this.role = role;
+    public void setRoleList(List<SysRole> roleList) {
+        this.roleList = roleList;
     }
 
     public Long getId() {
@@ -101,7 +102,7 @@ public class SysUser implements Serializable {
                 ", userInfo='" + userInfo + '\'' +
                 ", createTime=" + createTime +
                 ", headImg=" + Arrays.toString(headImg) +
-                ", sysRole=" + role +
+                ", roleList=" + roleList +
                 '}';
     }
 

@@ -12,16 +12,7 @@ import java.util.List;
 */
 public interface SysUserMapper {
 
-    SysUser selectById(Long id) ;
-
-    List<SysUser> selectAll ();
-
-
-    SysUser selectUserAndRoleById(Long id);
-
-    SysUser selectUserAndRoleById2(Long id);
-
-    SysUser selectUserAndRoleByIdSelect(Long id);
+    List<SysUser> selectAllUserAndRoles();
 
 }
 

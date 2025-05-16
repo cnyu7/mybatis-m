@@ -11,13 +11,16 @@
         <!-- 设置MyBatis Mapper接口的日志级别 -->
         <!-- com.example.mapper为mapper的xml文件所在的包路径-->
         <!-- additivity="false" 表示不传递给父级（root）,不重复打印日志-->
-        <Logger name="com.cn" level="DEBUG" additivity="false">
+        <Logger name="com.cn" level="TRACE" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.apache.ibatis.transaction" level="TRACE" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
 
         <!-- 根日志级别 -->
         <!--logger的级别是：root,logger; root是根日志，logger是root的子级别；root及logger里面的AppenderRef表示打印的方式-控制台 -->
-        <Root level="INFO">
+        <Root level="WARN">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>

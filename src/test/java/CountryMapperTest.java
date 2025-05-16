@@ -32,86 +32,17 @@ public class CountryMapperTest {
     }
 
     @Test
-    public void testselectAll() {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        try {
-            List<Country> countryList = sqlSession.selectList("comn.cn.mybatis.CountryMapper"+"selectAll");
-            printCountryList(countryList);
-        } finally {
-//不要忘记关闭 sqlSession
-            sqlSession.close();
-        }
-    }
-    @Test
-    public void testselectAll1() {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        try {
-            List<SysUser> countryList = sqlSession.selectList("com.cn.mapper" +
-                    ".SysUserMapper.selectAll");
-            countryList.forEach(SysUser -> System.out.println(SysUser.toString()));
-
-        } finally {
-//不要忘记关闭 sqlSession
-            sqlSession.close();
-        }
-    }
-    @Test
-    public void testSelectByid() {
+    public void selectAllUserAndRoles() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
             SysUserMapper mapper = sqlSession.getMapper(SysUserMapper.class);
-            SysUser sysUser = mapper.selectById(1L);
-            System.out.println(sysUser.toString());
+            List<SysUser> sysUsers = mapper.selectAllUserAndRoles();
+            Assert.assertNotNull(sysUsers);
+            sysUsers.forEach(System.out::println);
         } finally {
 //不要忘记关闭 sqlSession
             sqlSession.close();
         }
     }
 
-    @Test
-    public void selectUserAndRoleById() {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        try {
-            SysUserMapper mapper = sqlSession.getMapper(SysUserMapper.class);
-            SysUser sysUser = mapper.selectUserAndRoleById(1001L);
-            System.out.println(sysUser.toString());
-        } finally {
-//不要忘记关闭 sqlSession
-            sqlSession.close();
-        }
-    }
-    @Test
-    public void selectUserAndRoleById2() {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        try {
-            SysUserMapper mapper = sqlSession.getMapper(SysUserMapper.class);
-            SysUser sysUser = mapper.selectUserAndRoleById2(1001L);
-            System.out.println(sysUser.toString());
-        } finally {
-//不要忘记关闭 sqlSession
-            sqlSession.close();
-        }
-    }
-
-    @Test
-    public void selectUserAndRoleByIdSelect() {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        try {
-            SysUserMapper mapper = sqlSession.getMapper(SysUserMapper.class);
-            SysUser sysUser = mapper.selectUserAndRoleByIdSelect(1001L);
-            Assert.assertNotNull(sysUser) ;
-//            Assert.assertNotNull(sysUser.getRole()) ;
-            log.info("1");
-        } finally {
-//不要忘记关闭 sqlSession
-            sqlSession.close();
-        }
-    }
-
-
-    private void printCountryList(List<Country> countryList) {
-        for (Country country : countryList) {
-            System.out.printf("%-4d%4s%4s\n", country.getId(), country.getCountryName(), country.getCountryCode());
-        }
-    }
 }

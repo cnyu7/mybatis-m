@@ -4,12 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cn.mapper.SysRoleMapper">
 
-    <resultMap id="BaseResultMap" type="com.cn.mybatis.SysRole">
+    <resultMap id="BaseResultMap"  type="com.cn.mybatis.SysRole">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="roleName" column="role_name" jdbcType="VARCHAR"/>
             <result property="enabled" column="enabled" jdbcType="INTEGER"/>
             <result property="createBy" column="create_by" jdbcType="BIGINT"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <resultMap id="roleMap"  type="com.cn.mybatis.SysRole">
+        <id property="id" column="role_id" jdbcType="BIGINT"/>
+        <result property="roleName" column="role_role_name" jdbcType="VARCHAR"/>
+        <result property="enabled" column="role_enabled" jdbcType="INTEGER"/>
+        <result property="createBy" column="role_create_by" jdbcType="BIGINT"/>
+        <result property="createTime" column="role_create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
